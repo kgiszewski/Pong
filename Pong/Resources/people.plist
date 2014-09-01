@@ -34,5 +34,21 @@
 		<key>sound</key>
 		<string>skufca</string>
 	</dict>
+	<dict>
+		<key>image</key>
+		<string>taylor-smith</string>
+		<key>name</key>
+		<string>Taylor Smith</string>
+		<key>sound</key>
+		<string>smith</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>bryce-hammond</string>
+		<key>name</key>
+		<string>Bryce Hammond</string>
+		<key>sound</key>
+		<string>hammond</string>
+	</dict>
 </array>
 </plist>

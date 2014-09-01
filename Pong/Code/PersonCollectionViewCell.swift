@@ -19,7 +19,7 @@ class PersonCollectionViewCell: UICollectionViewCell {
     
     var person : Person? {
         didSet {
-            //self.imageView.image = person.image
+            self.imageView.image = person?.image
         }
     }
     

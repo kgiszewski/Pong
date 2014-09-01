@@ -15,17 +15,24 @@ class RootViewController: UIViewController {
     
     lazy var player1SelectionController : PlayerSelectionViewController = {
         let selectionController = UIStoryboard.mainStoryboard().instantiateViewControllerWithIdentifier("Player Selection") as PlayerSelectionViewController
+        self.addChildViewController(selectionController)
         return selectionController
     }()
     
     lazy var player2SelectionController : PlayerSelectionViewController = {
         let selectionController = UIStoryboard.mainStoryboard().instantiateViewControllerWithIdentifier("Player Selection") as PlayerSelectionViewController
+        self.addChildViewController(selectionController)
         return selectionController
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.player1SelectionController.view.frame = self.player1ContainerView.bounds
+        self.player2SelectionController.view.frame = self.player2ContainerView.bounds
+        
+        self.player1ContainerView.addSubview(self.player1SelectionController.view)
+        self.player2ContainerView.addSubview(self.player2SelectionController.view)
     }
 
     override func didReceiveMemoryWarning() {
