@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>image</key>
+		<string>dillon-morton</string>
+		<key>name</key>
+		<string>Dillon Morton</string>
+		<key>sound</key>
+		<string>morton</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>tom-fulton</string>
+		<key>name</key>
+		<string>Tom Fulton</string>
+		<key>sound</key>
+		<string>fulton</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>erik-smith</string>
+		<key>name</key>
+		<string>Erik Smith</string>
+		<key>sound</key>
+		<string>smith</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>john-skufca</string>
+		<key>name</key>
+		<string>John Skufca</string>
+		<key>sound</key>
+		<string>skufca</string>
+	</dict>
+</array>
+</plist>
