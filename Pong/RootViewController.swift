@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RootViewController: UIViewController {
+class RootViewController: UIViewController, PlayerSelectionViewControllerDelegate {
                             
     @IBOutlet weak var player1ContainerView: UIView!
     @IBOutlet weak var player2ContainerView: UIView!
@@ -38,6 +38,12 @@ class RootViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: PlayerSelectionViewControllerDelegate
+    
+    func playerSelectionViewController(controller : PlayerSelectionViewController, didSelectPerson person : Person) {
+        
     }
 
 }

@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol PlayerSelectionViewControllerDelegate {
+    func playerSelectionViewController(controller : PlayerSelectionViewController, didSelectPerson person : Person)
+}
+
 class PlayerSelectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     var people : [Person]
+    
+    var delegate : PlayerSelectionViewControllerDelegate?
     
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         self.people = [Person]()
@@ -59,7 +65,7 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDataSourc
         self.view.addSubview(imageView)
         
         //fade out the collection view and move the selection to the middle and enlarge
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 50.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 50.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
             
                 collectionView.alpha = 0.0
                 imageView.frame = CGRect(x: 0, y: 0, width: imageView.frame.size.width * 2, height: imageView.frame.size.height * 2)
@@ -67,6 +73,9 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDataSourc
             
             }, completion: { (finished : Bool) in
                 
+                if(finished) {
+                    self.delegate?.playerSelectionViewController(self, didSelectPerson: selectedPerson)
+                }
             })
         
         
