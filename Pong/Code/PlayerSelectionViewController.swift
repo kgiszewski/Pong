@@ -71,11 +71,12 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDataSourc
                 imageView.frame = CGRect(x: 0, y: 0, width: imageView.frame.size.width * 2, height: imageView.frame.size.height * 2)
                 imageView.center = self.view.center
             
-            }, completion: { (finished : Bool) in
+            }, completion: { finished in
                 
                 if(finished) {
                     self.delegate?.playerSelectionViewController(self, didSelectPerson: selectedPerson)
                 }
+                
             })
         
         

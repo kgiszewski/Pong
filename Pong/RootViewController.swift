@@ -13,6 +13,9 @@ class RootViewController: UIViewController, PlayerSelectionViewControllerDelegat
     @IBOutlet weak var player1ContainerView: UIView!
     @IBOutlet weak var player2ContainerView: UIView!
     
+    var player1 : Person?
+    var player2 : Person?
+    
     lazy var player1SelectionController : PlayerSelectionViewController = {
         let selectionController = UIStoryboard.mainStoryboard().instantiateViewControllerWithIdentifier("Player Selection") as PlayerSelectionViewController
         self.addChildViewController(selectionController)
@@ -43,6 +46,31 @@ class RootViewController: UIViewController, PlayerSelectionViewControllerDelegat
     //MARK: PlayerSelectionViewControllerDelegate
     
     func playerSelectionViewController(controller : PlayerSelectionViewController, didSelectPerson person : Person) {
+        if(controller == self.player1SelectionController) {
+            self.player1 = person
+        }
+        else if(controller == self.player2SelectionController) {
+            self.player2 = person
+        }
+        
+        if(self.player1 != nil && self.player2 != nil) {
+            //both players have been selected so instigate the match
+            
+            
+        }
+    }
+    
+    //MARK: Match animations
+    
+    func performVsAnimation() {
+        
+    }
+    
+    func performRound1Animation() {
+        
+    }
+    
+    func performFightAnimation() {
         
     }
 
