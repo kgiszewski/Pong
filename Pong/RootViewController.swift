@@ -58,8 +58,8 @@ class RootViewController: UIViewController, PlayerSelectionViewControllerDelegat
         if(self.player1 != nil && self.player2 != nil) {
             //both players have been selected so instigate the match
             self.performVsAnimation {
-                self.performFightAnimation {
-                    
+                self.performRound1Animation {
+                    self.performFightAnimation({})
                 }
             }
             
@@ -103,11 +103,71 @@ class RootViewController: UIViewController, PlayerSelectionViewControllerDelegat
     }
     
     func performRound1Animation( completion: Void -> Void) {
+        let round1Label = UILabel(frame: CGRectMake(0, 0, 800, 400))
+        round1Label.font = UIFont.boldSystemFontOfSize(200)
+        round1Label.text = "Round 1"
+        round1Label.textAlignment = .Center
+        round1Label.textColor = UIColor.redColor()
+        round1Label.backgroundColor = UIColor.clearColor()
+        round1Label.center = self.view.center
         
+        let round1Image = round1Label.image
+        let round1ImageView = UIImageView(image: round1Image)
+        round1ImageView.frameSize = CGSizeZero;
+        round1ImageView.center = self.view.center
+        self.view.addSubview(round1ImageView);
+        
+        UIView.animateWithDuration(0.2, animations: {
+            round1ImageView.frame = CGRectMake(self.view.center.x - round1Image.size.width / 2, self.view.center.y - round1Image.size.height / 2, round1Image.size.width, round1Image.size.height)
+            }, completion: { finished in
+                
+                UIView.animateWithDuration(0.2, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                    
+                    round1ImageView.frameSize = CGSizeMake(0, 0)
+                    round1ImageView.center = self.view.center
+                    
+                    }, completion: { finished in
+                        if(finished)
+                        {
+                            round1ImageView.removeFromSuperview()
+                            completion()
+                        }
+                })
+        })
     }
     
     func performFightAnimation( completion: Void -> Void) {
+        let fightLabel = UILabel(frame: CGRectMake(0, 0, 800, 400))
+        fightLabel.font = UIFont.boldSystemFontOfSize(200)
+        fightLabel.text = "Fight"
+        fightLabel.textAlignment = .Center
+        fightLabel.textColor = UIColor.redColor()
+        fightLabel.backgroundColor = UIColor.clearColor()
+        fightLabel.center = self.view.center
         
+        let fightImage = fightLabel.image
+        let fightImageView = UIImageView(image: fightImage)
+        fightImageView.frameSize = CGSizeZero;
+        fightImageView.center = self.view.center
+        self.view.addSubview(fightImageView);
+        
+        UIView.animateWithDuration(0.2, animations: {
+            fightImageView.frame = CGRectMake(self.view.center.x - fightImage.size.width / 2, self.view.center.y - fightImage.size.height / 2, fightImage.size.width, fightImage.size.height)
+            }, completion: { finished in
+                
+                UIView.animateWithDuration(0.2, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                    
+                    fightImageView.frameSize = CGSizeMake(0, 0)
+                    fightImageView.center = self.view.center
+                    
+                    }, completion: { finished in
+                        if(finished)
+                        {
+                            fightImageView.removeFromSuperview()
+                            completion()
+                        }
+                })
+        })
     }
     
     
