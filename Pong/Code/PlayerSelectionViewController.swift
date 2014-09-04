@@ -50,43 +50,46 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDataSourc
 
     // MARK: UICollectionViewDelegate/Datasource
     
-    func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         //Put an image of the cell over the selected cell, hide the cell and then animate it forward while fading out
         //the collection view
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        cell.alpha = 0.0
-        let selectedPerson = self.people[indexPath.row]
-        let cellFrame = collectionView.convertRect(cell.frame, toView: self.view)
-        
-        let imageView = UIImageView(image: selectedPerson.image)
-        imageView.frame = cellFrame
-        self.view.addSubview(imageView)
-        
-        //fade out the collection view and move the selection to the middle and enlarge
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 50.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
             
+            cell.alpha = 0.0
+            let selectedPerson = self.people[indexPath.row]
+            let cellFrame = collectionView.convertRect(cell.frame, toView: self.view)
+            
+            let imageView = UIImageView(image: selectedPerson.image)
+            imageView.frame = cellFrame
+            self.view.addSubview(imageView)
+            
+            //fade out the collection view and move the selection to the middle and enlarge
+            UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 50.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                
                 collectionView.alpha = 0.0
                 imageView.frame = CGRect(x: 0, y: 0, width: imageView.frame.size.width * 2, height: imageView.frame.size.height * 2)
                 imageView.center = self.view.center
-            
-            }, completion: { finished in
                 
-                if(finished) {
-                    self.delegate?.playerSelectionViewController(self, didSelectPerson: selectedPerson)
-                }
-                
+                }, completion: { finished in
+                    
+                    if(finished) {
+                        self.delegate?.playerSelectionViewController(self, didSelectPerson: selectedPerson)
+                    }
+                    
             })
+        }
+        
         
         
     }
     
-    func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.people.count
     }
     
-    func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Person", forIndexPath: indexPath) as PersonCollectionViewCell
         cell.person = self.people[indexPath.row]
