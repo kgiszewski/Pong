@@ -81,8 +81,6 @@ class RootViewController: UIViewController, PlayerSelectionViewControllerDelegat
         }
     }
     
-    //MARK: Match sounds
-    
     //MARK: Match animations
     
     func performVsAnimation( completion: Void -> Void) {
