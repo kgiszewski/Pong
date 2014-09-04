@@ -18,7 +18,9 @@ class RootViewController: UIViewController, PlayerSelectionViewControllerDelegat
     var player2 : Person?
     
     lazy var backgroundAudioPlayer : AVAudioPlayer = {
-        return AVAudioPlayer(contentsOfURL: NSBundle.mainBundle().URLForResource("Theme Song", withExtension: "m4a"), error: nil)
+        let backgroundPlayer = AVAudioPlayer(contentsOfURL: NSBundle.mainBundle().URLForResource("Theme Song", withExtension: "m4a"), error: nil)
+        backgroundPlayer.numberOfLoops = -1
+        return backgroundPlayer
     }()
     
     var animationAudioPlayer : AVAudioPlayer?
