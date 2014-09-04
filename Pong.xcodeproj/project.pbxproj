@@ -17,6 +17,18 @@
 		02812BD719B2891E00D4A8E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02812BD619B2891E00D4A8E2 /* Images.xcassets */; };
 		02812BF019B28B8000D4A8E2 /* PlayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02812BEF19B28B8000D4A8E2 /* PlayerSelectionViewController.swift */; };
 		02812BF219B28BDF00D4A8E2 /* PlayerScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02812BF119B28BDF00D4A8E2 /* PlayerScoreViewController.swift */; };
+		02BAA88619B81A750073232D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02BAA88519B81A750073232D /* AVFoundation.framework */; };
+		02BAA89319B81AD60073232D /* Excellent.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02BAA88819B81AD60073232D /* Excellent.mp3 */; };
+		02BAA89419B81AD60073232D /* Fatality.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02BAA88919B81AD60073232D /* Fatality.mp3 */; };
+		02BAA89519B81AD60073232D /* Fight.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02BAA88A19B81AD60073232D /* Fight.mp3 */; };
+		02BAA89619B81AD60073232D /* Finish Her.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02BAA88B19B81AD60073232D /* Finish Her.mp3 */; };
+		02BAA89719B81AD60073232D /* Finish Him.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02BAA88C19B81AD60073232D /* Finish Him.mp3 */; };
+		02BAA89819B81AD60073232D /* Flawless Victory.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02BAA88D19B81AD60073232D /* Flawless Victory.mp3 */; };
+		02BAA89919B81AD60073232D /* Laugh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02BAA88E19B81AD60073232D /* Laugh.mp3 */; };
+		02BAA89A19B81AD60073232D /* Selection.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02BAA88F19B81AD60073232D /* Selection.mp3 */; };
+		02BAA89B19B81AD60073232D /* Test Your Might.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02BAA89019B81AD60073232D /* Test Your Might.mp3 */; };
+		02BAA89C19B81AD60073232D /* Theme Song.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 02BAA89119B81AD60073232D /* Theme Song.m4a */; };
+		02BAA89D19B81AD60073232D /* VS.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 02BAA89219B81AD60073232D /* VS.m4a */; };
 		AF145A059E314CE3B31D31A9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52767E6EEAF64F2D863F4277 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +45,18 @@
 		02812BD619B2891E00D4A8E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		02812BEF19B28B8000D4A8E2 /* PlayerSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerSelectionViewController.swift; path = Code/PlayerSelectionViewController.swift; sourceTree = "<group>"; };
 		02812BF119B28BDF00D4A8E2 /* PlayerScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerScoreViewController.swift; path = Code/PlayerScoreViewController.swift; sourceTree = "<group>"; };
+		02BAA88519B81A750073232D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		02BAA88819B81AD60073232D /* Excellent.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Excellent.mp3; path = Resources/Sounds/Excellent.mp3; sourceTree = "<group>"; };
+		02BAA88919B81AD60073232D /* Fatality.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Fatality.mp3; path = Resources/Sounds/Fatality.mp3; sourceTree = "<group>"; };
+		02BAA88A19B81AD60073232D /* Fight.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Fight.mp3; path = Resources/Sounds/Fight.mp3; sourceTree = "<group>"; };
+		02BAA88B19B81AD60073232D /* Finish Her.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Finish Her.mp3"; path = "Resources/Sounds/Finish Her.mp3"; sourceTree = "<group>"; };
+		02BAA88C19B81AD60073232D /* Finish Him.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Finish Him.mp3"; path = "Resources/Sounds/Finish Him.mp3"; sourceTree = "<group>"; };
+		02BAA88D19B81AD60073232D /* Flawless Victory.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Flawless Victory.mp3"; path = "Resources/Sounds/Flawless Victory.mp3"; sourceTree = "<group>"; };
+		02BAA88E19B81AD60073232D /* Laugh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Laugh.mp3; path = Resources/Sounds/Laugh.mp3; sourceTree = "<group>"; };
+		02BAA88F19B81AD60073232D /* Selection.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Selection.mp3; path = Resources/Sounds/Selection.mp3; sourceTree = "<group>"; };
+		02BAA89019B81AD60073232D /* Test Your Might.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Test Your Might.mp3"; path = "Resources/Sounds/Test Your Might.mp3"; sourceTree = "<group>"; };
+		02BAA89119B81AD60073232D /* Theme Song.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Theme Song.m4a"; path = "Resources/Sounds/Theme Song.m4a"; sourceTree = "<group>"; };
+		02BAA89219B81AD60073232D /* VS.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = VS.m4a; path = Resources/Sounds/VS.m4a; sourceTree = "<group>"; };
 		02C30D6019B7870F00DE07D9 /* Pong-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pong-Bridging-Header.h"; sourceTree = "<group>"; };
 		52767E6EEAF64F2D863F4277 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDA72802E4CE445FA4F31C26 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -43,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02BAA88619B81A750073232D /* AVFoundation.framework in Frameworks */,
 				AF145A059E314CE3B31D31A9 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,6 +78,7 @@
 		024732D519B3B1C400B2742E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				02BAA88719B81AC80073232D /* Sounds */,
 				024732D619B5096B00B2742E /* people.plist */,
 			);
 			name = Resources;
@@ -127,9 +153,28 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		02BAA88719B81AC80073232D /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				02BAA88819B81AD60073232D /* Excellent.mp3 */,
+				02BAA88919B81AD60073232D /* Fatality.mp3 */,
+				02BAA88A19B81AD60073232D /* Fight.mp3 */,
+				02BAA88B19B81AD60073232D /* Finish Her.mp3 */,
+				02BAA88C19B81AD60073232D /* Finish Him.mp3 */,
+				02BAA88D19B81AD60073232D /* Flawless Victory.mp3 */,
+				02BAA88E19B81AD60073232D /* Laugh.mp3 */,
+				02BAA88F19B81AD60073232D /* Selection.mp3 */,
+				02BAA89019B81AD60073232D /* Test Your Might.mp3 */,
+				02BAA89119B81AD60073232D /* Theme Song.m4a */,
+				02BAA89219B81AD60073232D /* VS.m4a */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 		AF2E925757F943EE93A7D15D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				02BAA88519B81A750073232D /* AVFoundation.framework */,
 				52767E6EEAF64F2D863F4277 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -194,9 +239,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02BAA89C19B81AD60073232D /* Theme Song.m4a in Resources */,
 				02812BD519B2891E00D4A8E2 /* Main.storyboard in Resources */,
+				02BAA89519B81AD60073232D /* Fight.mp3 in Resources */,
+				02BAA89A19B81AD60073232D /* Selection.mp3 in Resources */,
+				02BAA89619B81AD60073232D /* Finish Her.mp3 in Resources */,
+				02BAA89719B81AD60073232D /* Finish Him.mp3 in Resources */,
+				02BAA89419B81AD60073232D /* Fatality.mp3 in Resources */,
+				02BAA89819B81AD60073232D /* Flawless Victory.mp3 in Resources */,
+				02BAA89919B81AD60073232D /* Laugh.mp3 in Resources */,
 				024732D719B5096B00B2742E /* people.plist in Resources */,
+				02BAA89B19B81AD60073232D /* Test Your Might.mp3 in Resources */,
 				02812BD719B2891E00D4A8E2 /* Images.xcassets in Resources */,
+				02BAA89319B81AD60073232D /* Excellent.mp3 in Resources */,
+				02BAA89D19B81AD60073232D /* VS.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

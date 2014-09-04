@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol PlayerSelectionViewControllerDelegate {
     func playerSelectionViewController(controller : PlayerSelectionViewController, didSelectPerson person : Person)
@@ -19,6 +20,8 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDataSourc
     var people : [Person]
     
     var delegate : PlayerSelectionViewControllerDelegate?
+    
+    var selectionSoundPlayer : AVAudioPlayer?
     
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         self.people = [Person]()
@@ -64,6 +67,10 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDataSourc
             let imageView = UIImageView(image: selectedPerson.image)
             imageView.frame = cellFrame
             self.view.addSubview(imageView)
+            
+            //play selection sound
+            self.selectionSoundPlayer = AVAudioPlayer(contentsOfURL: NSBundle.mainBundle().URLForResource("Selection", withExtension: "mp3"), error: nil)
+            self.selectionSoundPlayer?.play()
             
             //fade out the collection view and move the selection to the middle and enlarge
             UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 50.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {

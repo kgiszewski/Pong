@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class RootViewController: UIViewController, PlayerSelectionViewControllerDelegate {
                             
@@ -15,6 +16,12 @@ class RootViewController: UIViewController, PlayerSelectionViewControllerDelegat
     
     var player1 : Person?
     var player2 : Person?
+    
+    lazy var backgroundAudioPlayer : AVAudioPlayer = {
+        return AVAudioPlayer(contentsOfURL: NSBundle.mainBundle().URLForResource("Theme Song", withExtension: "m4a"), error: nil)
+    }()
+    
+    var animationAudioPlayer : AVAudioPlayer?
     
     lazy var player1SelectionController : PlayerSelectionViewController = {
         let selectionController = UIStoryboard.mainStoryboard().instantiateViewControllerWithIdentifier("Player Selection") as PlayerSelectionViewController
@@ -38,6 +45,8 @@ class RootViewController: UIViewController, PlayerSelectionViewControllerDelegat
         
         self.player1ContainerView.addSubview(self.player1SelectionController.view)
         self.player2ContainerView.addSubview(self.player2SelectionController.view)
+        
+        self.backgroundAudioPlayer.play()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +57,7 @@ class RootViewController: UIViewController, PlayerSelectionViewControllerDelegat
     //MARK: PlayerSelectionViewControllerDelegate
     
     func playerSelectionViewController(controller : PlayerSelectionViewController, didSelectPerson person : Person) {
+        
         if(controller == self.player1SelectionController) {
             self.player1 = person
         }
@@ -57,6 +67,9 @@ class RootViewController: UIViewController, PlayerSelectionViewControllerDelegat
         
         if(self.player1 != nil && self.player2 != nil) {
             //both players have been selected so instigate the match
+            
+            self.backgroundAudioPlayer.stop()
+            
             self.performVsAnimation {
                 self.performRound1Animation {
                     self.performFightAnimation({})
@@ -66,104 +79,50 @@ class RootViewController: UIViewController, PlayerSelectionViewControllerDelegat
         }
     }
     
+    //MARK: Match sounds
+    
     //MARK: Match animations
     
     func performVsAnimation( completion: Void -> Void) {
-        let vsLabel = UILabel(frame: CGRectMake(0, 0, 400, 400))
-        vsLabel.font = UIFont.boldSystemFontOfSize(200)
-        vsLabel.text = "VS"
-        vsLabel.textAlignment = .Center
-        vsLabel.textColor = UIColor.redColor()
-        vsLabel.backgroundColor = UIColor.clearColor()
-        vsLabel.center = self.view.center
         
-        let vsImage = vsLabel.image
-        let vsImageView = UIImageView(image: vsImage)
-        vsImageView.frameSize = CGSizeZero;
-        vsImageView.center = self.view.center
-        self.view.addSubview(vsImageView);
-        
-        UIView.animateWithDuration(0.2, animations: {
-                vsImageView.frame = CGRectMake(self.view.center.x - vsImage.size.width / 2, self.view.center.y - vsImage.size.height / 2, vsImage.size.width, vsImage.size.height)
-            }, completion: { finished in
-                
-                UIView.animateWithDuration(0.2, delay: 1.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                    
-                    vsImageView.frameSize = CGSizeMake(0, 0)
-                    vsImageView.center = self.view.center
-                    
-                    }, completion: { finished in
-                        if(finished)
-                        {
-                            vsImageView.removeFromSuperview()
-                            completion()
-                        }
-                })
-        })
+        self.animationAudioPlayer = AVAudioPlayer(contentsOfURL: NSBundle.mainBundle().URLForResource("VS", withExtension: "m4a"), error: nil)
+        self.animationAudioPlayer?.play()
+        self.animateText("VS", withDuration: 0.2, middleDelay: 1.5, completion: completion)
     }
     
     func performRound1Animation( completion: Void -> Void) {
-        let round1Label = UILabel(frame: CGRectMake(0, 0, 800, 400))
-        round1Label.font = UIFont.boldSystemFontOfSize(200)
-        round1Label.text = "Round 1"
-        round1Label.textAlignment = .Center
-        round1Label.textColor = UIColor.redColor()
-        round1Label.backgroundColor = UIColor.clearColor()
-        round1Label.center = self.view.center
         
-        let round1Image = round1Label.image
-        let round1ImageView = UIImageView(image: round1Image)
-        round1ImageView.frameSize = CGSizeZero;
-        round1ImageView.center = self.view.center
-        self.view.addSubview(round1ImageView);
-        
-        UIView.animateWithDuration(0.2, animations: {
-            round1ImageView.frame = CGRectMake(self.view.center.x - round1Image.size.width / 2, self.view.center.y - round1Image.size.height / 2, round1Image.size.width, round1Image.size.height)
-            }, completion: { finished in
-                
-                UIView.animateWithDuration(0.2, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                    
-                    round1ImageView.frameSize = CGSizeMake(0, 0)
-                    round1ImageView.center = self.view.center
-                    
-                    }, completion: { finished in
-                        if(finished)
-                        {
-                            round1ImageView.removeFromSuperview()
-                            completion()
-                        }
-                })
-        })
+        self.animateText("Round 1", withDuration: 0.2, middleDelay: 0.5, completion: completion)
     }
     
     func performFightAnimation( completion: Void -> Void) {
-        let fightLabel = UILabel(frame: CGRectMake(0, 0, 800, 400))
-        fightLabel.font = UIFont.boldSystemFontOfSize(200)
-        fightLabel.text = "Fight"
-        fightLabel.textAlignment = .Center
-        fightLabel.textColor = UIColor.redColor()
-        fightLabel.backgroundColor = UIColor.clearColor()
-        fightLabel.center = self.view.center
         
-        let fightImage = fightLabel.image
-        let fightImageView = UIImageView(image: fightImage)
-        fightImageView.frameSize = CGSizeZero;
-        fightImageView.center = self.view.center
-        self.view.addSubview(fightImageView);
+        self.animationAudioPlayer = AVAudioPlayer(contentsOfURL: NSBundle.mainBundle().URLForResource("Fight", withExtension: "mp3"), error: nil)
+        self.animationAudioPlayer?.play()
+        self.animateText("Fight", withDuration: 0.2, middleDelay: 0.5, completion: completion)
+    }
+    
+    func animateText(bannerText: String, withDuration duration : NSTimeInterval, middleDelay delay: NSTimeInterval, completion: Void -> Void) {
         
-        UIView.animateWithDuration(0.2, animations: {
-            fightImageView.frame = CGRectMake(self.view.center.x - fightImage.size.width / 2, self.view.center.y - fightImage.size.height / 2, fightImage.size.width, fightImage.size.height)
+        let image = self.imageForBannerText(bannerText)
+        let imageView = UIImageView(image: image)
+        imageView.frameSize = CGSizeZero;
+        imageView.center = self.view.center
+        self.view.addSubview(imageView);
+        
+        UIView.animateWithDuration(duration, animations: {
+            imageView.frame = CGRectMake(self.view.center.x - image.size.width / 2, self.view.center.y - image.size.height / 2, image.size.width, image.size.height)
             }, completion: { finished in
                 
-                UIView.animateWithDuration(0.2, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                UIView.animateWithDuration(duration, delay: delay, options: UIViewAnimationOptions.CurveEaseOut, animations: {
                     
-                    fightImageView.frameSize = CGSizeMake(0, 0)
-                    fightImageView.center = self.view.center
+                    imageView.frameSize = CGSizeMake(0, 0)
+                    imageView.center = self.view.center
                     
                     }, completion: { finished in
                         if(finished)
                         {
-                            fightImageView.removeFromSuperview()
+                            imageView.removeFromSuperview()
                             completion()
                         }
                 })
@@ -171,6 +130,17 @@ class RootViewController: UIViewController, PlayerSelectionViewControllerDelegat
     }
     
     
+    func imageForBannerText(bannerText : String) -> UIImage {
+        let label = UILabel(frame: CGRectMake(0, 0, 800, 400))
+        label.font = UIFont.boldSystemFontOfSize(200)
+        label.text = bannerText
+        label.textAlignment = .Center
+        label.textColor = UIColor.redColor()
+        label.backgroundColor = UIColor.clearColor()
+        label.center = self.view.center
+        
+        return label.image
+    }
 
 }
 
