@@ -17,27 +17,7 @@ class RootViewController: UIViewController, PlayerSelectionViewControllerDelegat
     var player1 : Person?
     var player2 : Person?
     
-    lazy var backgroundAudioPlayer : AVAudioPlayer = {
-        let backgroundPlayer = AVAudioPlayer(contentsOfURL: NSBundle.mainBundle().URLForResource("Theme Song", withExtension: "m4a"), error: nil)
-        backgroundPlayer.numberOfLoops = -1
-        return backgroundPlayer
-    }()
-    
     var animationAudioPlayer : AVAudioPlayer?
-    
-    lazy var player1SelectionController : PlayerSelectionViewController = {
-        let selectionController = UIStoryboard.mainStoryboard().instantiateViewControllerWithIdentifier("Player Selection") as PlayerSelectionViewController
-        selectionController.delegate = self
-        self.addChildViewController(selectionController)
-        return selectionController
-    }()
-    
-    lazy var player2SelectionController : PlayerSelectionViewController = {
-        let selectionController = UIStoryboard.mainStoryboard().instantiateViewControllerWithIdentifier("Player Selection") as PlayerSelectionViewController
-        selectionController.delegate = self
-        self.addChildViewController(selectionController)
-        return selectionController
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +54,15 @@ class RootViewController: UIViewController, PlayerSelectionViewControllerDelegat
             
             self.performVsAnimation {
                 self.performRound1Animation {
-                    self.performFightAnimation({})
+                    self.performFightAnimation {
+                        
+                        //Transition to scoring
+                        self.player1ScoreController.player = self.player1
+                        self.player2ScoreController.player = self.player2
+                        
+                        UIView.transitionFromView(self.player1SelectionController.view, toView: self.player1ScoreController.view, duration: 0, options: UIViewAnimationOptions.TransitionNone, completion: nil)
+                        UIView.transitionFromView(self.player2SelectionController.view, toView: self.player2ScoreController.view, duration: 0, options: UIViewAnimationOptions.TransitionNone, completion: nil)
+                    }
                 }
             }
             
@@ -141,6 +129,40 @@ class RootViewController: UIViewController, PlayerSelectionViewControllerDelegat
         
         return label.image
     }
+    
+    // MARK: Lazy loads
+    
+    lazy var player1SelectionController : PlayerSelectionViewController = {
+        let selectionController = UIStoryboard.mainStoryboard().instantiateViewControllerWithIdentifier("Player Selection") as PlayerSelectionViewController
+        selectionController.delegate = self
+        self.addChildViewController(selectionController)
+        return selectionController
+    }()
+    
+    lazy var player2SelectionController : PlayerSelectionViewController = {
+        let selectionController = UIStoryboard.mainStoryboard().instantiateViewControllerWithIdentifier("Player Selection") as PlayerSelectionViewController
+        selectionController.delegate = self
+        self.addChildViewController(selectionController)
+        return selectionController
+    }()
+    
+    lazy var player1ScoreController : PlayerScoreViewController = {
+        let scoreController = UIStoryboard.mainStoryboard().instantiateViewControllerWithIdentifier("Player Score") as PlayerScoreViewController
+        self.addChildViewController(scoreController)
+        return scoreController
+    }()
+    
+    lazy var player2ScoreController : PlayerScoreViewController = {
+        let scoreController = UIStoryboard.mainStoryboard().instantiateViewControllerWithIdentifier("Player Score") as PlayerScoreViewController
+        self.addChildViewController(scoreController)
+        return scoreController
+    }()
+    
+    lazy var backgroundAudioPlayer : AVAudioPlayer = {
+        let backgroundPlayer = AVAudioPlayer(contentsOfURL: NSBundle.mainBundle().URLForResource("Theme Song", withExtension: "m4a"), error: nil)
+        backgroundPlayer.numberOfLoops = -1
+        return backgroundPlayer
+    }()
 
 }
 

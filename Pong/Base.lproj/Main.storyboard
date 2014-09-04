@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.9" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
     </dependencies>
@@ -41,7 +41,7 @@
         <!--Player Selection View Controller-->
         <scene sceneID="ttx-aP-baX">
             <objects>
-                <viewController storyboardIdentifier="Player Selection" id="f6n-L8-eqZ" customClass="PlayerSelectionViewController" customModule="Pong" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Player Selection" autoresizesArchivedViewToFullSize="NO" id="f6n-L8-eqZ" customClass="PlayerSelectionViewController" customModule="Pong" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WnO-2P-bLX">
                         <rect key="frame" x="0.0" y="0.0" width="512" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,6 +93,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eux-lm-Gxy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="203" y="1944"/>
+        </scene>
+        <!--Player Score View Controller-->
+        <scene sceneID="Jbg-13-G5R">
+            <objects>
+                <viewController storyboardIdentifier="Player Score" autoresizesArchivedViewToFullSize="NO" id="Ycb-8B-wf7" customClass="PlayerScoreViewController" customModule="Pong" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lfv-WU-Lmc">
+                        <rect key="frame" x="0.0" y="0.0" width="512" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="QC4-cr-EVk">
+                                <rect key="frame" x="56" y="234" width="400" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="34" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XgT-GU-WnR">
+                                <rect key="frame" x="29" y="233" width="455" height="301"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="300"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="512" height="768"/>
+                    <connections>
+                        <outlet property="playerImageView" destination="QC4-cr-EVk" id="H6Q-oh-SRb"/>
+                        <outlet property="scoreLabel" destination="XgT-GU-WnR" id="B13-UL-E6e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EQs-Vk-tzZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="757" y="1944"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
